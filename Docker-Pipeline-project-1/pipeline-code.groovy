@@ -22,18 +22,18 @@ pipeline{
         }
         stage('docker build'){
             steps{
-                sh "docker build -t tampoohoonm/project-docker:${BUILD_NUMBER} ."
+                sh "docker build -t vishalsutharr/project-docker:${BUILD_NUMBER} ."
             }
         }
         stage('dockerhub push'){
             steps{
                 sh "echo $dockerhub_cred_PSW | docker login -u $dockerhub_cred_USR --password-stdin"
-                sh "docker push tampoohoonm/project-docker:${BUILD_NUMBER}"
+                sh "docker push vishalsutharr/project-docker:${BUILD_NUMBER}"
             }
         }
         stage('Docker run'){
             steps{
-                sh "docker run -d -p 80:8080 --name addressbook tampoohoonm/project-docker:${BUILD_NUMBER}"
+                sh "docker run -d -p 80:8080 --name addressbook vishalsutharr/project-docker:${BUILD_NUMBER}"
             }
         }
     }
