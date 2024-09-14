@@ -33,7 +33,7 @@ pipeline{
         }
         stage('Docker run'){
             steps{
-                sh "docker run -d -p 80:8080 --name addressbook vishalsutharr/project-docker:${BUILD_NUMBER}"
+                sh "docker run -d -p 5000:8080 --name addressbook vishalsutharr/project-docker:${BUILD_NUMBER}"
             }
         }
     }
